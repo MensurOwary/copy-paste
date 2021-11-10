@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "version": "0.0.1",
+    "name": "copy/paste",
+    "author": "Mensur Owary",
+    "description": "Google Chrome extension that allows you to copy multiple texts and paste them in the copied order",
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["contextMenus", "activeTab", "scripting"],
+    "commands": {
+        "copy-string": {
+            "suggested_key": "Alt+C",
+            "description": "Copy the text"
+        },
+        "paste-string": {
+            "suggested_key": "Alt+V",
+            "description": "Paste the text"
+        },
+        "clear-clipboard": {
+            "suggested_key": "Alt+X",
+            "description": "Clears the clipboard"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://*/*", "http://*/*"],
+            "js": ["content-script.js"]
+        }
+    ],
+    "icons": {
+        "48": "icons/48.png",
+        "128": "icons/128.png"
+    }
+}
